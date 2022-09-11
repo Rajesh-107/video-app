@@ -1,6 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
 import "./App.css";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
@@ -17,7 +15,7 @@ function App() {
       <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/videos/:id" element={<Video></Video>}></Route>
+          <Route path="/videos/:videoId" element={<Video></Video>}></Route>
         </Routes>
       <Footer></Footer>
     </>
