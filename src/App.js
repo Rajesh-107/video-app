@@ -9,6 +9,8 @@ import {
   Route,
 } from "react-router-dom";
 
+import Add from "./pages/Add";
+
 function App() {
   return (
     <>
@@ -16,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/videos/:videoId" element={<Video></Video>}></Route>
+          <Route path="/videos/add" element={<Add></Add>}></Route>
         </Routes>
       <Footer></Footer>
     </>
