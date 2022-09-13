@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 import Add from "./pages/Add";
+import Edit from "./pages/Edit";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/videos/:videoId" element={<Video></Video>}></Route>
           <Route path="/videos/add" element={<Add></Add>}></Route>
+          <Route path="/videos/edit/:videoId" element={<Edit></Edit>}></Route>
         </Routes>
       <Footer></Footer>
     </>

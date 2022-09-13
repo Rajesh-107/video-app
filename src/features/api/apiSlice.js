@@ -6,9 +6,11 @@ export const apiSlice = createApi({
         baseUrl: 'http://localhost:9000',
 
     }),
+    tagTypes: ["Videos", "Video", "RelatedVideos"],
     endpoints: (builder) => ({
         getVideos: builder.query({
             query: () => '/videos',
+            providesTags: ["Videos"]
         }),
 
         addVideo: builder.mutation({
@@ -19,10 +21,30 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ["Videos"],
         }),
+        editVideo: builder.mutation({
+            query: ({id, data}) => ({
+                url: `/videos/${id}`,
+                method: "PATCH",
+                body: data,
+            }),
+            invalidatesTags: (result, error, arg) => [
+                "Videos",
+                {type: "Video", id: arg.id},
+                {type: "RelatedVideos", id: arg.id}
+            ] ,
+        }),
+        deleteVideo: builder.mutation({
+            query: (id) => ({
+                url: `/videos/${id}`,
+                method: "DELETE",
+               
+            }),
+            invalidatesTags: ["Videos"] ,
+        }),
     }),
   
 
     
 });
 
-export const {useGetVideosQuery, useAddVideoMutation} = apiSlice;
+export const {useGetVideosQuery, useAddVideoMutation, useEditVideoMutation, useDeleteVideoMutation} = apiSlice;
